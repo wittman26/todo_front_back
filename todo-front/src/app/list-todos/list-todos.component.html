@@ -1,0 +1,18 @@
+<table class="ui celled padded table">
+    <caption class="ui center aligned header" >Todo's List</caption>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--   for (Todo todo: todos) {  -->
+              <tr *ngFor="let todo of todos">
+                <td>{{todo.id}}</td>
+                <td>{{todo.description}}</td>
+              </tr>
+      <!-- } -->
+    </tbody>
+  
+  </table>
