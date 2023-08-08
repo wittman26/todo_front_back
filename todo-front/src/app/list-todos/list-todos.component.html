@@ -7,12 +7,11 @@
       </tr>
     </thead>
     <tbody>
-      <!--   for (Todo todo: todos) {  -->
-              <tr *ngFor="let todo of todos">
-                <td>{{todo.id}}</td>
-                <td>{{todo.description}}</td>
-              </tr>
-      <!-- } -->
+      <tr *ngFor="let todo of todos">
+        <td>{{todo.description}}</td>
+        <td>{{todo.targetDate | date: 'dd/MM/yyyy' | uppercase}}</td>
+        <td>{{todo.done}}</td>        
+      </tr>
     </tbody>
   
   </table>
