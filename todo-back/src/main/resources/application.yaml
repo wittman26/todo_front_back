@@ -3,3 +3,5 @@ logging:
     org:
       springframework:
         DEBUG
+server:
+  port: '9191'

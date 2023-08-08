@@ -1,20 +1,14 @@
 package com.learning.todoback.model;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Builder
 public class HealthCheckLearning {
 
   String message;
-  public HealthCheckLearning() {
-  }
 
-  public HealthCheckLearning(String message) {
-    this.message = message;
-  }
-
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
 }

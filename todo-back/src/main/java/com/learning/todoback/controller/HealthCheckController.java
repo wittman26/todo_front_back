@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthCheckController {
 
-
   @GetMapping(value = "/healthcheck-bean", produces = MediaType.APPLICATION_JSON_VALUE)
   public HealthCheckLearning getHealth2() {
-    return new HealthCheckLearning("Service TODO is running OK");
+    return HealthCheckLearning.builder()
+            .message("Service TODO is running OK")
+            .build();
   }
 
   @GetMapping(value = "/healthcheck", produces = MediaType.APPLICATION_JSON_VALUE)
