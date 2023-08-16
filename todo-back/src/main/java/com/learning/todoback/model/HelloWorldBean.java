@@ -7,8 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class HealthCheckLearning {
+public class HelloWorldBean {
 
   String message;
+
+  public HelloWorldBean(String message) {
+    this.message = message;
+  }
 
 }

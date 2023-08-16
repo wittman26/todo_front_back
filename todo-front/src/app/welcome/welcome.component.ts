@@ -7,40 +7,51 @@ import { HelloWorldBean, WelcomeDataService } from '../services/data/welcome-dat
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent implements OnInit{
+export class WelcomeComponent implements OnInit {
   message = 'Some Welcome Message'
   name: string | undefined;
-  welcomeMessageFromService:string | undefined;
+  welcomeMessageFromService: string | undefined;
 
   //ActivatedRoute
-  constructor(private route:ActivatedRoute,private service:WelcomeDataService) { 
+  constructor(private route: ActivatedRoute, private service: WelcomeDataService) {
 
-  } 
+  }
 
   // void init() {
-    ngOnInit(){
-      //COMPILATION ERROR this.message = 5
-      console.log(this.message)
-      // console.log(this.route.snapshot.params['name'])
-      this.name = this.route.snapshot.params['name'];
-    }
-    
-    getWelcomeMessage() {
-      console.log(this.service.executeHelloWorldBeanService());
-    
-      this.service.executeHelloWorldBeanService().subscribe(
-        response =>  {
-          this.handleSuccessfulResponse(response)
-          console.log(JSON.stringify(response));
-        }
-      );
-      
-      console.log('last line of getWelcomeMessage')
-  
-      //console.log("get welcome message");      
-    }
+  ngOnInit() {
+    //COMPILATION ERROR this.message = 5
+    console.log(this.message)
+    // console.log(this.route.snapshot.params['name'])
+    this.name = this.route.snapshot.params['name'];
+  }
 
-    handleSuccessfulResponse(response: HelloWorldBean){
-      this.welcomeMessageFromService = response.message
-    }    
+  getWelcomeMessage() {
+    this.service.executeHelloWorldBeanService().subscribe(
+      response => {
+        this.handleSuccessfulResponse(response)
+      },
+      error => {
+        this.handleErrorResponse(error)
+      }
+    );
+
+    console.log('last line of getWelcomeMessage');
+  }
+
+  getWelcomeMessageWithParameter() {
+    this.service.executeHelloWorldBeanServiceParam(this.name).subscribe(
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
+    );
+  }
+
+
+  handleErrorResponse(error: any) {
+    this.welcomeMessageFromService = error.error.message
+  }
+
+  handleSuccessfulResponse(response: HelloWorldBean) {
+    this.welcomeMessageFromService = response.message;
+    console.log(JSON.stringify(response));
+  }
 }

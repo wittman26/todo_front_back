@@ -30,4 +30,8 @@ export class WelcomeDataService {
   executeHelloWorldBeanService() {
     return this.http.get<HelloWorldBean>('http://localhost:9191/healthcheck-bean', httpOptions);
   }
+
+  executeHelloWorldBeanServiceParam(name: any) {
+    return this.http.get<HelloWorldBean>(`http://localhost:9191/healthcheck-bean/${name}`, httpOptions);
+  }  
 }
