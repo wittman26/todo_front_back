@@ -1,4 +1,4 @@
-package com.learning.todoback.model;
+package com.learning.todoback.helloworld.model;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,11 +8,9 @@ import lombok.Setter;
 @Setter
 @Builder
 public class HelloWorldBean {
-
   String message;
 
   public HelloWorldBean(String message) {
     this.message = message;
   }
-
 }

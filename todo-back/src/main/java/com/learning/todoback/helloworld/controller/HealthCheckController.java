@@ -1,6 +1,6 @@
-package com.learning.todoback.controller;
+package com.learning.todoback.helloworld.controller;
 
-import com.learning.todoback.model.HelloWorldBean;
+import com.learning.todoback.helloworld.model.HelloWorldBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,7 @@ public class HealthCheckController {
 
   @GetMapping(value = "/healthcheck-bean", produces = MediaType.APPLICATION_JSON_VALUE)
   public HelloWorldBean getHealth2() {
-    return HelloWorldBean.builder()
-            .message("Service TODO is running OK")
-            .build();
+    return HelloWorldBean.builder().message("Service TODO is running OK").build();
   }
 
   @GetMapping(value = "/healthcheck", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -27,6 +25,9 @@ public class HealthCheckController {
 
   @GetMapping(value = "/healthcheck-bean/{name}")
   public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
-    return HelloWorldBean.builder().message(String.format("Hello World, %s", name)).build();
+    return HelloWorldBean
+      .builder()
+      .message(String.format("Hello World, %s", name))
+      .build();
   }
 }

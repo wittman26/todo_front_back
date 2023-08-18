@@ -6,6 +6,7 @@ import { ListTodosComponent } from './list-todos/list-todos.component';
 import { ErrorComponent } from './error/error.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RouteGuardService } from './services/route-guard.service';
+import { TodoComponent } from './todo/todo/todo.component';
 
 const TODO_ROUTES: Routes = [
   { path: '', component: LoginComponent,  },
@@ -13,6 +14,7 @@ const TODO_ROUTES: Routes = [
   { path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService] },
   { path: 'welcome/:name', component: WelcomeComponent, canActivate:[RouteGuardService]},
   { path: 'todos', component: ListTodosComponent, canActivate:[RouteGuardService] },
+  { path: 'todos/:id', component: TodoComponent, canActivate:[RouteGuardService] },
 
   { path: '**', component: ErrorComponent } // Página por defecto
 ];
